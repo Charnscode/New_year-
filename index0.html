@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy New Year 2026 ✨</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #1a0b2e 0%, #3d1b6d 25%, #6d2875 50%, #a83279 75%, #d4527c 100%);
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        .container {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            position: relative;
+            z-index: 10;
+        }
+
+        .stars {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .star {
+            position: absolute;
+            border-radius: 50%;
+            background: white;
+            box-shadow: 0 0 10px rgba(255,255,255,0.8);
+            animation: twinkle 2s infinite ease-in-out;
+        }
+
+        .emoji-float {
+            position: fixed;
+            font-size: 3rem;
+            opacity: 0.3;
+            animation: bounce 2s infinite;
+            z-index: 1;
+        }
+
+        .content-box {
+            max-width: 600px;
+            width: 100%;
+            text-align: center;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .icon-container {
+            width: 100px;
+            height: 100px;
+            margin: 0 auto 2rem;
+            animation: sparkle 2s infinite;
+        }
+
+        .sparkle-svg {
+            width: 100%;
+            height: 100%;
+            color: #fbbf24;
+        }
+
+        h1 {
+            font-size: 6rem;
+            font-weight: bold;
+            color: white;
+            margin-bottom: 2rem;
+            text-shadow: 0 0 30px rgba(251,191,36,0.6);
+        }
+
+        .subtitle {
+            font-size: 2rem;
+            background: linear-gradient(90deg, #fbbf24, #ec4899, #8b5cf6);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: bold;
+            margin-bottom: 3rem;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            border-radius: 24px;
+            padding: 3rem;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .heart-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 1.5rem;
+            animation: pulse 2s infinite;
+            color: #ec4899;
+        }
+
+        .message-title {
+            font-size: 2.5rem;
+            font-weight: bold;
+            background: linear-gradient(90deg, #fbbf24, #ec4899, #8b5cf6);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 1.5rem;
+        }
+
+        .from-name {
+            font-size: 1.8rem;
+            color: white;
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+
+        .message-text {
+            font-size: 1.3rem;
+            color: #bfdbfe;
+        }
+
+        .custom-message {
+            margin-top: 1.5rem;
+            padding: 1.5rem;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .custom-message-text {
+            font-size: 1.2rem;
+            color: #fbcfe8;
+            font-style: italic;
+        }
+
+        label {
+            display: block;
+            text-align: left;
+            color: white;
+            font-weight: bold;
+            font-size: 1.1rem;
+            margin-bottom: 0.75rem;
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 1rem 1.5rem;
+            border-radius: 16px;
+            background: rgba(255, 255, 255, 0.2);
+            border: 2px solid rgba(255, 255, 255, 0.4);
+            color: white;
+            font-size: 1.1rem;
+            transition: all 0.3s;
+        }
+
+        input::placeholder, textarea::placeholder {
+            color: #bfdbfe;
+        }
+
+        input:focus, textarea:focus {
+            outline: none;
+            border-color: #ec4899;
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        textarea {
+            resize: none;
+            font-family: inherit;
+        }
+
+        .btn {
+            width: 100%;
+            padding: 1.25rem 2rem;
+            border-radius: 16px;
+            border: none;
+            font-weight: bold;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: transform 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.75rem;
+            margin-top: 2rem;
+        }
+
+        .btn:hover:not(:disabled) {
+            transform: scale(1.05);
+        }
+
+        .btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .btn-primary {
+            background: linear-gradient(90deg, #fbbf24, #ec4899, #8b5cf6);
+            color: white;
+            box-shadow: 0 10px 30px rgba(236, 72, 153, 0.4);
+        }
+
+        .btn-success {
+            background: linear-gradient(90deg, #4ade80, #10b981, #14b8a6);
+            color: white;
+            box-shadow: 0 10px 30px rgba(16, 185, 129, 0.4);
+        }
+
+        .btn-secondary {
+            background: linear-gradient(90deg, #fbbf24, #ec4899, #8b5cf6);
+            color: white;
+            padding: 1rem 2.5rem;
+            width: auto;
+            margin: 2rem auto 0;
+        }
+
+        .link-box {
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 16px;
+            padding: 1.25rem;
+            word-break: break-all;
+            color: white;
+            font-size: 0.9rem;
+            border: 2px solid rgba(255, 255, 255, 0.4);
+            margin-bottom: 1.25rem;
+        }
+
+        .text-link {
+            color: #bfdbfe;
+            text-decoration: underline;
+            cursor: pointer;
+            transition: color 0.3s;
+            font-size: 1rem;
+            display: inline-block;
+            margin-top: 1rem;
+        }
+
+        .text-link:hover {
+            color: white;
+        }
+
+        .success-title {
+            color: white;
+            font-weight: bold;
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .success-subtitle {
+            color: #fbcfe8;
+            margin-bottom: 1.5rem;
+        }
+
+        .signature {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 0.9rem;
+            font-weight: bold;
+            text-align: right;
+            z-index: 1000;
+        }
+
+        .signature a {
+            color: #fbbf24;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .signature a:hover {
+            color: #ec4899;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        @keyframes twinkle {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.3; }
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(40px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        @keyframes sparkle {
+            0%, 100% { opacity: 1; transform: rotate(0deg); }
+            50% { opacity: 0.5; transform: rotate(180deg); }
+        }
+
+        @media (max-width: 768px) {
+            h1 { font-size: 4rem; }
+            .subtitle { font-size: 1.5rem; }
+            .message-title { font-size: 2rem; }
+            .from-name { font-size: 1.5rem; }
+            .message-text { font-size: 1.1rem; }
+            .card { padding: 2rem; }
+            .emoji-float { font-size: 2rem; }
+        }
+    </style>
+</head>
+<body>
+    <div class="stars" id="stars"></div>
+
+    <!-- Emojis flottants -->
+    <div class="emoji-float" style="top: 10%; left: 10%;">🎆</div>
+    <div class="emoji-float" style="bottom: 10%; right: 10%; animation-delay: 0.5s;">✨</div>
+    <div class="emoji-float" style="top: 25%; right: 15%; animation-delay: 1s;">🎊</div>
+    <div class="emoji-float" style="bottom: 33%; left: 15%; animation-delay: 1.5s;">🎉</div>
+    <div class="emoji-float" style="top: 50%; left: 8%; animation-delay: 2s;">🌟</div>
+    <div class="emoji-float" style="top: 33%; right: 8%; animation-delay: 2.5s;">💫</div>
+
+    <div class="container">
+        <div class="content-box">
+            <!-- Vue message reçu -->
+            <div id="receivedView" class="hidden">
+                <div class="icon-container">
+                    <svg class="sparkle-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M12 2L15 8.5L22 9.5L17 14.5L18 21.5L12 18.5L6 21.5L7 14.5L2 9.5L9 8.5L12 2Z"/>
+                    </svg>
+                </div>
+                <h1>Happy New year 2026</h1>
+                <div class="card">
+                    <div class="heart-icon">
+                        <svg viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+                        </svg>
+                    </div>
+                    <p class="message-title">Happy New Year!</p>
+                    <p class="from-name" id="senderName"></p>
+                    <p class="message-text">vous souhaite une merveilleuse année 2026 ! 🎉</p>
+                    <div id="customMessageContainer" class="custom-message hidden">
+                        <p class="custom-message-text" id="customMessageText"></p>
+                    </div>
+                </div>
+                <button class="btn btn-secondary" onclick="showFormView()">
+                    <span>✨</span>
+                    Créer mes propres vœux
+                </button>
+            </div>
+
+            <!-- Vue formulaire -->
+            <div id="formView" class="hidden">
+                <div class="icon-container">
+                    <svg class="sparkle-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M12 2L15 8.5L22 9.5L17 14.5L18 21.5L12 18.5L6 21.5L7 14.5L2 9.5L9 8.5L12 2Z"/>
+                    </svg>
+                </div>
+                <h1>Happy New year 2026</h1>
+                <p class="subtitle">Créez vos vœux magiques ✨</p>
+                <div class="card">
+                    <label>Votre nom</label>
+                    <input type="text" id="nameInput" placeholder="Entrez votre nom">
+                    
+                    <div id="messageToggle">
+                        <a class="text-link" onclick="toggleMessageInput()">
+                            💖 Ajouter un message personnel (optionnel)
+                        </a>
+                    </div>
+
+                    <div id="messageInputContainer" class="hidden">
+                        <label style="margin-top: 1.5rem;">Votre message personnel</label>
+                        <textarea id="messageInput" rows="3" placeholder="Ex: Que cette année t'apporte bonheur et réussite..."></textarea>
+                    </div>
+                    
+                    <button class="btn btn-primary" onclick="generateLink()" id="generateBtn">
+                        <span>🔗</span>
+                        Générer mon lien magique
+                    </button>
+                </div>
+            </div>
+
+            <!-- Vue lien généré -->
+            <div id="linkView" class="hidden">
+                <div class="icon-container">
+                    <svg class="sparkle-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M12 2L15 8.5L22 9.5L17 14.5L18 21.5L12 18.5L6 21.5L7 14.5L2 9.5L9 8.5L12 2Z"/>
+                    </svg>
+                </div>
+                <h1>2026</h1>
+                <p class="subtitle">Créez vos vœux magiques ✨</p>
+                <div class="card">
+                    <p class="success-title">Votre lien est prêt ! 🎊</p>
+                    <p class="success-subtitle">Partagez la magie avec vos proches</p>
+                    <div class="link-box" id="generatedLink"></div>
+                    <button class="btn btn-success" onclick="copyLink()" id="copyBtn">
+                        <span>📋</span>
+                        Copier le lien
+                    </button>
+                    <a class="text-link" onclick="resetForm()">Créer un nouveau lien</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+  
+    <script>
+        // Créer les étoiles
+        const starsContainer = document.getElementById('stars');
+        for (let i = 0; i < 80; i++) {
+            const star = document.createElement('div');
+            star.className = 'star';
+            star.style.left = Math.random() * 100 + '%';
+            star.style.top = Math.random() * 100 + '%';
+            const size = Math.random() * 3 + 1;
+            star.style.width = size + 'px';
+            star.style.height = size + 'px';
+            star.style.animationDelay = Math.random() * 2 + 's';
+            starsContainer.appendChild(star);
+        }
+
+        // Récupérer les paramètres URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const fromName = urlParams.get('from');
+        const customMessage = urlParams.get('msg');
+
+        // Initialiser la vue
+        function initView() {
+            if (fromName) {
+                document.getElementById('senderName').textContent = decodeURIComponent(fromName);
+                if (customMessage) {
+                    document.getElementById('customMessageText').textContent = '"' + decodeURIComponent(customMessage) + '"';
+                    document.getElementById('customMessageContainer').classList.remove('hidden');
+                }
+                document.getElementById('receivedView').classList.remove('hidden');
+            } else {
+                document.getElementById('formView').classList.remove('hidden');
+            }
+        }
+
+        // Toggle message input
+        function toggleMessageInput() {
+            const container = document.getElementById('messageInputContainer');
+            const toggle = document.getElementById('messageToggle');
+            container.classList.toggle('hidden');
+            toggle.classList.toggle('hidden');
+        }
+
+        // Générer le lien
+        function generateLink() {
+            const name = document.getElementById('nameInput').value.trim();
+            if (!name) {
+                alert('Veuillez entrer votre nom');
+                return;
+            }
+
+            const message = document.getElementById('messageInput').value.trim();
+            const baseUrl = window.location.origin + window.location.pathname;
+            let link = baseUrl + '?from=' + encodeURIComponent(name);
+            
+            if (message) {
+                link += '&msg=' + encodeURIComponent(message);
+            }
+
+            document.getElementById('generatedLink').textContent = link;
+            document.getElementById('formView').classList.add('hidden');
+            document.getElementById('linkView').classList.remove('hidden');
+        }
+
+        // Copier le lien
+        function copyLink() {
+            const link = document.getElementById('generatedLink').textContent;
+            navigator.clipboard.writeText(link).then(() => {
+                const btn = document.getElementById('copyBtn');
+                const originalText = btn.innerHTML;
+                btn.innerHTML = '<span>✅</span> Copié !';
+                setTimeout(() => {
+                    btn.innerHTML = originalText;
+                }, 2000);
+            });
+        }
+
+        // Réinitialiser le formulaire
+        function resetForm() {
+            document.getElementById('nameInput').value = '';
+            document.getElementById('messageInput').value = '';
+            document.getElementById('messageInputContainer').classList.add('hidden');
+            document.getElementById('messageToggle').classList.remove('hidden');
+            document.getElementById('linkView').classList.add('hidden');
+            document.getElementById('formView').classList.remove('hidden');
+        }
+
+        // Afficher la vue formulaire
+        function showFormView() {
+            window.location.href = window.location.pathname;
+        }
+
+        // Activer/désactiver le bouton selon l'input
+        document.addEventListener('DOMContentLoaded', () => {
+            const nameInput = document.getElementById('nameInput');
+            const generateBtn = document.getElementById('generateBtn');
+            
+            if (nameInput) {
+                nameInput.addEventListener('input', () => {
+                    if (nameInput.value.trim()) {
+                        generateBtn.disabled = false;
+                    } else {
+                        generateBtn.disabled = true;
+                    }
+                });
+            }
+        });
+
+        // Initialiser
+        initView();
+    </script>
+    
+    <footer>   <div class="signature">
+        Créé avec ❤️ par <a href="#">Charnscode</a>
+    </div>
+</footer>
+    
+</body>
+</html>
